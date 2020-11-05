@@ -1,2 +1,2 @@
 Asp.net projesidir.Bootstrap ve EntityFramework kullanılmıştır.
-Admin Paneli oluşturulmuştur.
+<b>Admin Paneli oluşturulmuştur.</b>
