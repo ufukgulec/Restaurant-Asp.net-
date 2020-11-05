@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="restaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="anasayfa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="acikGun" Type="nvarchar" MaxLength="50" />
+          <Property Name="acikSaat" Type="nvarchar" MaxLength="50" />
+          <Property Name="slogan" Type="nvarchar" MaxLength="50" />
+          <Property Name="arkaPlan" Type="nvarchar(max)" />
+          <Property Name="videoLink" Type="nvarchar(max)" />
+          <Property Name="adres" Type="nvarchar(max)" />
+          <Property Name="eposta" Type="nvarchar" MaxLength="100" />
+          <Property Name="harita" Type="nvarchar(max)" />
+          <Property Name="instagram" Type="nvarchar(max)" />
+          <Property Name="twitter" Type="nvarchar(max)" />
+          <Property Name="facebook" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="galeri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="resimYolu" Type="nvarchar(max)" />
+          <Property Name="alt" Type="nvarchar" MaxLength="50" />
+          <Property Name="onay" Type="bit" />
+        </EntityType>
+        <EntityType Name="hakkimizda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="100" />
+          <Property Name="foto" Type="nvarchar(max)" />
+          <Property Name="arkaPlan" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="icindekiler" Type="nvarchar" MaxLength="50" />
+          <Property Name="fiyat" Type="smallmoney" />
+          <Property Name="kategoriId" Type="int" />
+          <Property Name="resim" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="nedenbiz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="nvarchar" MaxLength="30" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="organizasyon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="fiyat" Type="smallmoney" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="arkaPlan" Type="nvarchar(max)" />
+          <Property Name="foto" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="rezervasyon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="tarih" Type="smalldatetime" />
+          <Property Name="mesaj" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sef">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="soyisim" Type="nvarchar" MaxLength="50" />
+          <Property Name="kidem" Type="nvarchar" MaxLength="50" />
+          <Property Name="instagram" Type="nvarchar(max)" />
+          <Property Name="twitter" Type="nvarchar(max)" />
+          <Property Name="facebook" Type="nvarchar(max)" />
+          <Property Name="foto" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="special">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="100" />
+          <Property Name="resim" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="yorum">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yorum" Type="nvarchar" MaxLength="200" />
+          <Property Name="isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="soyisim" Type="nvarchar" MaxLength="50" />
+          <Property Name="onay" Type="bit" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="restaurantModelStoreContainer">
+          <EntitySet Name="anasayfa" EntityType="Self.anasayfa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="galeri" EntityType="Self.galeri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hakkimizda" EntityType="Self.hakkimizda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategori" EntityType="Self.kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nedenbiz" EntityType="Self.nedenbiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="organizasyon" EntityType="Self.organizasyon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rezervasyon" EntityType="Self.rezervasyon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sef" EntityType="Self.sef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="special" EntityType="Self.special" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yorum" EntityType="Self.yorum" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="restaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="anasayfa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="acikGun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="acikSaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="slogan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="arkaPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="videoLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eposta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="harita" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="instagram" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="twitter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="facebook" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="galeri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="resimYolu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="alt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="onay" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="hakkimizda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="arkaPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="icindekiler" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fiyat" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="kategoriId" Type="Int32" />
+          <Property Name="resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="nedenbiz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="organizasyon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fiyat" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="arkaPlan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rezervasyon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <Property Name="mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sef">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kidem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="instagram" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="twitter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="facebook" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="special">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="yorum">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yorum1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="onay" Type="Boolean" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="restaurantEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="anasayfas" EntityType="Self.anasayfa" />
+          <EntitySet Name="galeris" EntityType="Self.galeri" />
+          <EntitySet Name="hakkimizdas" EntityType="Self.hakkimizda" />
+          <EntitySet Name="kategoris" EntityType="Self.kategori" />
+          <EntitySet Name="menus" EntityType="Self.menu" />
+          <EntitySet Name="nedenbizs" EntityType="Self.nedenbiz" />
+          <EntitySet Name="organizasyons" EntityType="Self.organizasyon" />
+          <EntitySet Name="rezervasyons" EntityType="Self.rezervasyon" />
+          <EntitySet Name="sefs" EntityType="Self.sef" />
+          <EntitySet Name="specials" EntityType="Self.special" />
+          <EntitySet Name="yorums" EntityType="Self.yorum" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="restaurantModelStoreContainer" CdmEntityContainer="restaurantEntities">
+          <EntitySetMapping Name="anasayfas">
+            <EntityTypeMapping TypeName="restaurantModel.anasayfa">
+              <MappingFragment StoreEntitySet="anasayfa">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="acikGun" ColumnName="acikGun" />
+                <ScalarProperty Name="acikSaat" ColumnName="acikSaat" />
+                <ScalarProperty Name="slogan" ColumnName="slogan" />
+                <ScalarProperty Name="arkaPlan" ColumnName="arkaPlan" />
+                <ScalarProperty Name="videoLink" ColumnName="videoLink" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="eposta" ColumnName="eposta" />
+                <ScalarProperty Name="harita" ColumnName="harita" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="galeris">
+            <EntityTypeMapping TypeName="restaurantModel.galeri">
+              <MappingFragment StoreEntitySet="galeri">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="resimYolu" ColumnName="resimYolu" />
+                <ScalarProperty Name="alt" ColumnName="alt" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hakkimizdas">
+            <EntityTypeMapping TypeName="restaurantModel.hakkimizda">
+              <MappingFragment StoreEntitySet="hakkimizda">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="arkaPlan" ColumnName="arkaPlan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategoris">
+            <EntityTypeMapping TypeName="restaurantModel.kategori">
+              <MappingFragment StoreEntitySet="kategori">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menus">
+            <EntityTypeMapping TypeName="restaurantModel.menu">
+              <MappingFragment StoreEntitySet="menu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="icindekiler" ColumnName="icindekiler" />
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nedenbizs">
+            <EntityTypeMapping TypeName="restaurantModel.nedenbiz">
+              <MappingFragment StoreEntitySet="nedenbiz">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="organizasyons">
+            <EntityTypeMapping TypeName="restaurantModel.organizasyon">
+              <MappingFragment StoreEntitySet="organizasyon">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="arkaPlan" ColumnName="arkaPlan" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rezervasyons">
+            <EntityTypeMapping TypeName="restaurantModel.rezervasyon">
+              <MappingFragment StoreEntitySet="rezervasyon">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="mesaj" ColumnName="mesaj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sefs">
+            <EntityTypeMapping TypeName="restaurantModel.sef">
+              <MappingFragment StoreEntitySet="sef">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="soyisim" ColumnName="soyisim" />
+                <ScalarProperty Name="kidem" ColumnName="kidem" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="specials">
+            <EntityTypeMapping TypeName="restaurantModel.special">
+              <MappingFragment StoreEntitySet="special">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yorums">
+            <EntityTypeMapping TypeName="restaurantModel.yorum">
+              <MappingFragment StoreEntitySet="yorum">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="yorum1" ColumnName="yorum" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="soyisim" ColumnName="soyisim" />
+                <ScalarProperty Name="onay" ColumnName="onay" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
